@@ -1,3 +1,10 @@
+# O que fazer após clonar esse repositório
+
+`npm install`
+`npm run test`
+
+# Passos pra chegar até este estado
+
 ## passo 1
 
 npm init -y
