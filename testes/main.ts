@@ -1,4 +1,7 @@
 export function situacaoAluno(nota: number) {
+  if (nota < 0 || nota > 10) {
+    return "Invalido"
+  }
   if (nota <= 4) {
     return "Reprovado sem direito a exame"
   }

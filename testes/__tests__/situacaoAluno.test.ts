@@ -9,8 +9,35 @@ describe("Função situacaoAluno", () => {
 
     //Rodo a função a ser testada com a entrada desejada
     const result = situacaoAluno(4)
-    //checagem com 4, separado, guardo o valor e depois checo
     expect(result).toBe("Reprovado sem direito a exame")
+  })
+
+  it("Deve retornar reprovado com exame quando input for entre 5 - 5.9", () => {
+    expect(situacaoAluno(5)).toBe("Reprovado com direito a exame")
+
+    const result = situacaoAluno(5.9)
+    expect(result).toBe("Reprovado com direito a exame")
+  })
+
+  it("Deve retornar aprovado quando input for entre 6 - 9.9", () => {
+    expect(situacaoAluno(6)).toBe("Aprovado")
+
+    const result = situacaoAluno(9.9)
+    expect(result).toBe("Aprovado")
+  })
+
+  it("Deve retornar aprovado e condecorado quando input for 10", () => {
+    expect(situacaoAluno(10)).toBe("Aprovado e condecorado")
+  })
+
+  describe("Classes Invalidas", () => {
+    it("Deve retornar invalido para input -1", () => {
+      expect(situacaoAluno(-1)).toBe("Invalido")
+    })
+
+    it("Deve retornar invalido para input 100", () => {
+      expect(situacaoAluno(100)).toBe("Invalido")
+    })
   })
 })
 
