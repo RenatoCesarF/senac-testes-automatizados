@@ -1,35 +1,32 @@
 from enum import Enum
 import random
 
-from utils import decide_winner, get_winning_message, GameResult
+from utils import PlayChoice, decide_winner, get_winning_message, GameResult
 
-class PlayChoice(Enum):
-    PEDRA = "pedra" 
-    PAPEL = "papel" 
-    TESOURA = "tesoura"
+opcoes = [PlayChoice.PEDRA, PlayChoice.PAPEL, PlayChoice.TESOURA ]
 
-# Opções possíveis
-opcoes = ["pedra", "papel", "tesoura"]
+def run_game():
+    play1 = get_player_input()
+
+    if not is_option_valid(play1):
+        print("Opção invalida")
+        quit()
+
+    # Jogada da máquina
+    maquina = random.choice(opcoes)
+    print(f"A máquina escolheu: {maquina.value}")
+
+    result = decide_winner(play1, maquina)
+    message = get_winning_message(result)
+    print(message)
+
 
 def is_option_valid(option) -> bool:
     return option in opcoes
 
-# Entrada do usuário
-jogador = input("Escolha pedra, papel ou tesoura: ").lower()
+def get_player_input() -> PlayChoice:
+    jogador = input("Escolha pedra, papel ou tesoura: ").upper()
+    return PlayChoice[jogador]
 
-# Validação da entrada
-if not is_option_valid(jogador):
-    print("Opção invalida")
-    quit()
-
-# Jogada da máquina
-maquina = random.choice(opcoes)
-print(f"A máquina escolheu: {maquina}")
-
-result = decide_winner(jogador, maquina)
-message = get_winning_message(result)
-print(message)
-
-# - Qual a pior forma de testar isso? CMD e automação de mouse
-# - Como tornar esse código mais testável? (Dividir e conquistar)
-# - Como escrever os testes
+if __name__ == "__main__":
+    run_game()

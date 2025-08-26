@@ -5,6 +5,11 @@ class GameResult(Enum):
     TIE = 0
     PLAYER1 = 1
     PLAYER2 = 2
+    
+class PlayChoice(Enum):
+    PEDRA = "pedra" 
+    PAPEL = "papel" 
+    TESOURA = "tesoura"
 
 def get_winning_message(result: GameResult) -> str:
     match result:
