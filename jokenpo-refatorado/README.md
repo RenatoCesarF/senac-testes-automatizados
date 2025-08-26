@@ -1,3 +1,6 @@
+Gerar Virtual Enviroment:
+`python -m venv venv`
+
 Ativar Virtual Enviroment:
 `source ./venv/bin/activate`
 
